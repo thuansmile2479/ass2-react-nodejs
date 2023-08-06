@@ -15,7 +15,7 @@ const ProductManagementPage = (props: IProps) => {
     })
     return (
         <div className='pro'>
-            <h2 >Products</h2>
+            <h2 className='anime'>ALL ANIME</h2>
             <div className="product">
                 {data.map((item: any) => {
                     return (

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = ({ signUp, err }) => {
   const [valueInput, setValueInput] = useState({});
@@ -21,7 +23,7 @@ const Register = ({ signUp, err }) => {
       </div>
       <div className="right-signUp">
         <form onSubmit={onHandSubmit} className='from'>
-          <h1>Register</h1>
+          <h1>Signup</h1>
           <em style={{ color: 'red' }}>
             {err}
             {errs}
@@ -67,6 +69,24 @@ const Register = ({ signUp, err }) => {
           <button type="submit" className="btn btn-signUp btn-primary">
             Submit
           </button>
+          <div className="user-foot text-center"> 
+          <a href="../forgot-password/index.html" className="clearfix">
+              {/* Forgot password? */}
+            </a>
+            <p className="clearfix">Or signup with</p>
+            <li className="loginFb">
+              <span>
+                <FaFacebookF />
+              </span>
+              <a href="#">Signup Facebook</a>
+            </li>
+            <li className="loginGg">
+              <span>
+                <FcGoogle />
+              </span>
+              <a href="#">Signup Google</a>
+            </li>
+          </div>
         </form>
       </div>
     </div>

@@ -3,27 +3,206 @@ import { Outlet, Link } from 'react-router-dom';
 import { Button, Form } from 'antd';
 import '../../index.css'
 import ProductManagementPage from '../Product'
+import { ImPhone } from "react-icons/im";
+
 
 const WebsiteLayout = () => {
   return (
     <div>
-      <div className="actions">
-        <div className='login'>
-          <a href=""><button><Link to={'/signup'}>Signup</Link></button></a>
-        </div>
-        <div className='logup'>
-          <a href=""><button><Link to={'/signin'}>Signin</Link></button></a>
+      <div className="actionsss">
+        <img src="https://e1.yotools.net/images/user_image/2023/08/64cfd68fcc34c.jpg" alt="" />
+        <div className="actions">
+          <div className='login'>
+            <a href=""><button><Link to={'/signup'}>Signup</Link></button></a>
+          </div>
+          <div className='logup'>
+            <a href=""><button><Link to={'/signin'}>Signin</Link></button></a>
+          </div>
         </div>
       </div>
 
       <div className="banner">
-        <img src="https://picsum.photos/1870/550" alt="" />
+        <img src="https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/8d8818c8e140c64c743113f563cf750f.jpg" alt="" />
       </div>
       <main>
         <Outlet />
       </main>
       <footer>
-        <p style={{ textAlign: 'center' }}>Nguyễn Duy Thuận </p>
+        <div>
+          <div className="sub-banner">
+            <img
+              src="https://i.pinimg.com/originals/fb/10/e1/fb10e16ce8776e6b7e4d4213a16d4344.jpg"
+              alt="Sub Banner"
+            />
+          </div>
+          <div className="infoFooter">
+            <div className="contact-phone">
+              <h4>CALL TO PURCHASE ( 08:30-22:00 )</h4>
+              <div className="infoContent">
+                <span className="iconFooter">
+                  <ImPhone />
+                </span>
+                <span className="titleHotline">0842755626</span>
+                <span className="moreInfoFooter">Every day of the week</span>
+              </div>
+            </div>
+            {/* end phone 1 */}
+            <div className="contact-phone">
+              <h4>COMMENTS & COMPLAINTS ( 08:30-22:00 )</h4>
+            <div className="infoContent">
+              <span className="iconFooter">
+                  <ImPhone />
+              </span>
+              <span className="titleHotline">0913960912</span>
+              <span className="moreInfoFooter">Every day of the week</span>
+            </div>
+            </div>
+            {/* end phone 2 */}
+            <div className="form-email">
+              <h4>SIGN UP FOR NEW INFORMATION</h4>
+              <div className="register">
+                <input
+                  type="text"
+                  className="input_regBot"
+                  placeholder="Enter your email here..."
+                />
+                <button className="btn__register" type="button">
+                  REGISTER
+                </button>
+              </div>
+            </div>
+            {/* form-email */}
+            <div className="follow-us">
+              <h4>FOLLOW US</h4>
+              <div className="icon-social">
+                <ul className="navbar-social">
+                  <li className="social">
+                    <a href="#" className="navbar-icon__links">
+                      <img
+                        src="https://res.cloudinary.com/do9rcgv5s/image/upload/v1669200313/icons8-facebook_cmwyc3.svg"
+                        data-sizes="auto"
+                        alt=""
+                      />
+                    </a>
+                  </li>
+                  <li className="social">
+                    <a href="#" className="navbar-icon__links">
+                      <img
+                        src="https://res.cloudinary.com/do9rcgv5s/image/upload/v1669200313/icons8-instagram_yuoq0o.svg"
+                        data-sizes="auto"
+                        alt=""
+                      />
+                    </a>
+                  </li>
+                  <li className="social">
+                    <a href="#" className="navbar-icon__links">
+                      <img
+                        src="https://res.cloudinary.com/do9rcgv5s/image/upload/v1669200313/icons8-shopee_jgryq9.svg"
+                        data-sizes="auto"
+                        alt=""
+                      />
+                    </a>
+                  </li>
+                  <li className="social">
+                    <a href="#" className="navbar-icon__links">
+                      <img
+                        src="https://res.cloudinary.com/do9rcgv5s/image/upload/v1669200313/icons8-zalo_kfj8wm.svg"
+                        alt=""
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/*end follow us */}
+          </div>
+          {/* Begin : footerBottom  */}
+          <div className="footerBottom">
+            <div className="policies">
+              <h5>POLICIES &amp; REGULATIONS</h5>
+              <ul className="policise-item">
+                <li>
+                  <a href="#">How to order</a>
+                </li>
+                <li>
+                  <a href="#">Membership Policy</a>
+                </li>
+                <li>
+                  <a href="#">Delivery policy</a>
+                </li>
+                <li>
+                  <a href="#">Terms of return</a>
+                </li>
+                <li>
+                  <a href="#">Payments</a>
+                </li>
+                <li>
+                  <a href="#">Complaint handling policy</a>
+                </li>
+              </ul>
+            </div>
+            {/* end policies */}
+            <div className="system">
+              <h5>SHOP SYSTEM</h5>
+              <ul className="system">
+                <p>►344 Cau Giay</p>
+                <p>►23 Chua Boc, Dong Da</p>
+                <p>►338 Nguyen Trai, Ha Dong</p>
+                <p>►209 Bach Mai</p>
+                <p>►189 Pho Nhon</p>
+                <p>►183 Tran Cung</p>
+              </ul>
+            </div>
+            {/* end system */}
+            <div className="about-us">
+              <h5>ABOUT US</h5>
+              <p>
+                <strong>LIMITED LIABILITY COMPANY TIME MAN</strong>
+              </p>
+              <p>
+                <strong>Address: </strong>
+                Minh Khai Ward, Nam Tu Liem District, <br />
+                Hanoi City
+              </p>
+              <p>
+                <strong>Business code:</strong>
+                0108901419 issued by Hanoi Department of Planning and Investment
+                on September 17, 2019
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                0842.755.626
+              </p>
+              <p>
+                <strong>Email: </strong>
+                duythuan2479@gmail.com
+              </p>
+              <p>
+                <a href="http://online.gov.vn/Home/WebDetails/69075">
+                  <img
+                    src="https://res.cloudinary.com/do9rcgv5s/image/upload/v1669023848/assignment_ReactTS/boCongThuong_kracr5.png"
+                    alt="boCongThuong"
+                    height="57px"
+                  />
+                </a>
+              </p>
+            </div>
+            <div className="our_fanpage">
+              <h5>OUR FANPAGE</h5>
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffpt.poly&tabs=timeline&width=340&height=331&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                width={340}
+                height={331}
+                style={{ border: "none", overflow: "hidden" }}
+                scrolling="no"
+                frameBorder={0}
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              />
+            </div>
+          </div>
+          <div className="bottomBar"></div>
+        </div>
       </footer>
     </div>
   );

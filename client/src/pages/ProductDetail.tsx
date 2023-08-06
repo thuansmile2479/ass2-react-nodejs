@@ -17,8 +17,8 @@ const ProductDetailPage = (props: IProprs) => {
   return (
     <div className='class'>
       
-      <div>
-        <h1>Product Detail Page</h1>
+      <div >
+        <h1 >Anime Detail Page</h1>
         <Image width={400} src={product?.image}/>
       </div>
 
