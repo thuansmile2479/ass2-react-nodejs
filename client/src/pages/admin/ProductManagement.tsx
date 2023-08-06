@@ -32,6 +32,7 @@ const ProductManagementPage = (prors) => {
     prors.onRemove(id);
   };
   interface DataType {
+    [x: string]: any;
     key: string;
     id: number;
     name: string;
@@ -67,7 +68,7 @@ const ProductManagementPage = (prors) => {
       title: 'Category ',
       dataIndex: 'categoryId',
       key: 'categoryId',
-      render: (_, record) => <a href="">{record?.categoryId?.name}</a>,
+      render: (_, record: any) => <a href="">{record?.categoryId?.name}</a>,
     },
     {
       title: 'Action',

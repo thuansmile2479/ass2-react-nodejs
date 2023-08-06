@@ -6,6 +6,8 @@ import { PlusOutlined } from '@ant-design/icons';
 import type { RcFile, UploadProps } from 'antd/es/upload';
 import type { UploadFile } from 'antd/es/upload/interface';
 import { categoryRq } from '../../api/category';
+import { useNavigate } from 'react-router-dom';
+
 interface IProps {
     onAdd: (product: IProduct) => void
 }
@@ -30,12 +32,13 @@ const AddProductPage = (props: IProps) => {
     const getCate = async () => {
       const res = await categoryRq.getAllCate()
       setCate(res.data)
+      
     }
 
     useEffect(() => {
       getCate()
     }, [])
-
+    // const navigate = useNavigate()
     const onFinish = (values: any) => {
         const newProduct = {
             id: values.id,
@@ -46,8 +49,10 @@ const AddProductPage = (props: IProps) => {
             categoryId: values.categoryId
         }
         console.log(values.image.file.thumbUrl);
-
-        props.onAdd(newProduct);
+        
+        props.onAdd(newProduct as any);
+        // alert("Add product successfully");
+        // navigate('/admin/products')
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -105,7 +110,7 @@ const AddProductPage = (props: IProps) => {
                 <Form.Item
                     label="Product Price"
                     name="price"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    rules={[{ required: true, message: 'Please input your price!' }]}
                 >
                     <Input />
                 </Form.Item>
@@ -128,7 +133,7 @@ const AddProductPage = (props: IProps) => {
                 <Form.Item
                     label="Desc"
                     name="desc"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    rules={[{ required: true, message: 'Please input your desc!' }]}
                 >
                     <Input />
                 </Form.Item>
@@ -136,7 +141,7 @@ const AddProductPage = (props: IProps) => {
                 <Form.Item
                     label="CategoryId"
                     name="categoryId"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    rules={[{ required: true, message: 'Please input your categoryId!' }]}
                 >
                     <Select placeholder="please choose category" >
                       {cate?.map((cateOb: any) => (

@@ -8,7 +8,7 @@ import { categoryRq } from '../../api/category';
 import { ICategory } from '../../types/category';
 interface IProps {
     categories: ICategory[],
-    onUpdate: (id, category: ICategory) => void
+    onUpdate: (id: any, category: ICategory) => void
 }
 const UpdateCategoryPage = (props: IProps) => {
 
@@ -41,6 +41,8 @@ const UpdateCategoryPage = (props: IProps) => {
     const onFinish = (values: any) => {
     
         props.onUpdate(id, values);
+        alert("Update category successfully")
+
         navigate('/admin/category')
     };
     const onFinishFailed = (errorInfo: any) => {

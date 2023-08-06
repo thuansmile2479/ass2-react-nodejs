@@ -36,31 +36,31 @@ function App() {
   }, []);
   const onHandleRemove = async (id: number) => {
     const status = confirm("Bạn có chắc muốn xóa sản phẩm hay không ???")
-    if(status){
+    if (status) {
       await deleteProduct(id)
-      .then(() => {
-        getAllProduct().then(({ data }) => setProduct(data));
-        navigate('/admin/products');
-      })
-      .catch(({ response }) => {
-        alert(response.data.message);
-      });
+        .then(() => {
+          getAllProduct().then(({ data }) => setProduct(data));
+          navigate('/admin/products');
+        })
+        .catch(({ response }) => {
+          alert(response.data.message);
+        });
     }
-    
+
   };
 
   const onHandleRemoveCate = async (id: number) => {
 
     const status = confirm("Bạn có chắc muốn xóa hay không ???")
-    if(status){
+    if (status) {
       await categoryRq.remove(id)
-      .then(() => {
-        categoryRq.getAllCate().then(({ data }) => setCategory(data));
-        navigate('/admin/category');
-      })
-      .catch(({ response }) => {
-        alert(response.data.message);
-      });
+        .then(() => {
+          categoryRq.getAllCate().then(({ data }) => setCategory(data));
+          navigate('/admin/category');
+        })
+        .catch(({ response }) => {
+          alert(response.data.message);
+        });
     }
   };
 
@@ -68,7 +68,9 @@ function App() {
   const onHandleAdd = (product: any) => {
     addProduct(product)
       .then(() => {
-        setProduct([...products, product] as any), navigate('/admin/products');
+        setProduct([...products, product] as any),
+          alert("Add product successfully")
+        navigate('/admin/products');
       })
       .catch(({ response }) => alert(response.data.message));
   };
@@ -76,22 +78,25 @@ function App() {
   const addCategory = (category: any) => {
     categoryRq.addCategory(category)
       .then(() => {
-        setCategory([...categories, category] as any), navigate('/admin/category');
+        setCategory([...categories, category] as any), 
+        navigate('/admin/category');
       })
       .catch(({ response }) => alert(response.data.message));
   };
   const onHandleUpdate = (id: any, product: any) => {
     updateProduct(id, product)
       .then(() => {
-        return setProduct(products.map((item: any) => (item._id === id ? product : item)) as any),
-          navigate('/admin/products');
+          setProduct(products.map((item: any) => (item._id === id ? product : item)) as any),
+        alert("Update product successfully");
+
+        navigate('/admin/products');
       })
       .catch(({ response }) => {
         alert(response.data.message);
       });
   };
 
-  const  updateCategory= (id: any, category: any) => {
+  const updateCategory = (id: any, category: any) => {
     categoryRq.updateCategory(id, category)
       .then(() => {
         setCategory(categories.map((item: any) => (item._id === id ? category : item)) as any),
@@ -130,11 +135,11 @@ function App() {
       <Routes>
         {/* -------------------------------------HOME-------------------------------------------- */}
         <Route path="/" element={<WebsiteLayout />}>
-          <Route index element={ <ProductPage products={products} oneRemove={onHandleRemove} /> } />
+          <Route index element={<ProductPage products={products} oneRemove={onHandleRemove} />} />
           <Route path="signup" element={<Register err={err} signUp={onHandSignUp} />} ></Route>
           <Route path="signin" element={<Login login={onHandLogin} err={err} />} ></Route>
           <Route path="products">
-            <Route index element={ <ProductPage products={products} oneRemove={onHandleRemove} /> } ></Route>
+            <Route index element={<ProductPage products={products} oneRemove={onHandleRemove} />} ></Route>
             <Route path=":id" element={<ProductDetailPage products={products} />} ></Route>
           </Route>
         </Route>
@@ -145,15 +150,15 @@ function App() {
           {/* <Route path="register" element={<Register err={err} signUp={onHandSignUp} />} ></Route>
           <Route path="login" element={<Login login={onHandLogin} err={err} />} ></Route> */}
           <Route path="products">
-            <Route index element={ <ProductManagementPage products={products} onRemove={onHandleRemove} /> } />
-            <Route path=":id/update" element={ <UpdateProductPage products={products} onUpdate={onHandleUpdate} /> } />
+            <Route index element={<ProductManagementPage products={products} onRemove={onHandleRemove} />} />
+            <Route path=":id/update" element={<UpdateProductPage products={products} onUpdate={onHandleUpdate} />} />
             <Route path="add" element={<AddProductPage onAdd={onHandleAdd} />} />
           </Route>
           <Route path="category" >
             <Route index element={<CategoryManager onRemoveCate={onHandleRemoveCate} data={categories} />} />
-            <Route path=":id/update" element={ <UpdateCategoryPage categories={categories} onUpdate={updateCategory} /> } />
+            <Route path=":id/update" element={<UpdateCategoryPage categories={categories} onUpdate={updateCategory} />} />
             <Route path="add" element={<AddCategory onAdd={addCategory} />} />
-          </Route> 
+          </Route>
         </Route>
       </Routes>
     </div>

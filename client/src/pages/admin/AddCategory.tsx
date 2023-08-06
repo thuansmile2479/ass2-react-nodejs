@@ -19,6 +19,7 @@ const AddCategory = (props: IProps) => {
     const navigate = useNavigate()
     const onFinish = (values: ICategory) => {
         props.onAdd(values);
+        alert("Add category successfully");
         navigate('/admin/navigate')
     };
 

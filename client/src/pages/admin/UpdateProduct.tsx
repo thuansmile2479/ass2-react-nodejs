@@ -7,23 +7,23 @@ import { PlusOutlined } from '@ant-design/icons';
 import { categoryRq } from '../../api/category';
 interface IProps {
     products: IProduct[],
-    onUpdate: (id, product: IProduct) => void
+    onUpdate: (id: any, product: IProduct) => void
 }
 const UpdateProductPage = (props: IProps) => {
 
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState('');
-  const [previewTitle, setPreviewTitle] = useState('');
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
-  const [cate, setCate] = useState([])
-  const getCate = async () => {
-    const res = await categoryRq.getAllCate()
-    setCate(res.data)
-  }
+    const [previewOpen, setPreviewOpen] = useState(false);
+    const [previewImage, setPreviewImage] = useState('');
+    const [previewTitle, setPreviewTitle] = useState('');
+    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [cate, setCate] = useState([])
+    const getCate = async () => {
+        const res = await categoryRq.getAllCate()
+        setCate(res.data)
+    }
 
-  useEffect(() => {
-    getCate()
-  }, [])
+    useEffect(() => {
+        getCate()
+    }, [])
     const { id } = useParams()
     const navigate = useNavigate()
 
@@ -37,28 +37,28 @@ const UpdateProductPage = (props: IProps) => {
         setFields() // gọi hàm setFields để set lại giá trị cho các input
     }, [product])
     console.log(product);
-    
+
     const [form] = Form.useForm();
     // khởi tạo một instance của Form và gán vào biến form
     // Instance của form là một đối tượng được tạo ra bởi Ant Design để thực hiện các chức năng của form trong React
     const getBase64 = (file: RcFile): Promise<string> =>
-    new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = (error) => reject(error);
-    });
+        new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = (error) => reject(error);
+        });
     const handlePreview = async (file: UploadFile) => {
-      if (!file.url && !file.preview) {
-          file.preview = await getBase64(file.originFileObj as RcFile);
-      }
+        if (!file.url && !file.preview) {
+            file.preview = await getBase64(file.originFileObj as RcFile);
+        }
 
-      setPreviewImage(file.url || (file.preview as string));
-      setPreviewOpen(true);
-      setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
-  };
+        setPreviewImage(file.url || (file.preview as string));
+        setPreviewOpen(true);
+        setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
+    };
 
-  const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => setFileList(newFileList);
+    const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => setFileList(newFileList);
 
     const setFields = () => {// hàm này để set lại giá trị cho các input
         form.setFieldsValue({ // gọi hàm setFieldsValue của instance form để set lại giá trị cho các input dựa vào giá trị của biến product
@@ -66,35 +66,34 @@ const UpdateProductPage = (props: IProps) => {
             name: product?.name,
             price: product?.price,
             desc: product?.desc,
-            categoryId: product?.categoryId?._id
+            categoryId: product?.categoryId?._id,
         })
     }
 
     const onFinish = (values: any) => {
-      console.log(values.image === undefined);
-      const prdUpdate = {
-        id: values.id,
-        name: values.name,
-        price: values.price,
-        desc: values.desc,
-        image: values.image === undefined ? product?.image : values.image?.file.thumbUrl,
-        categoryId: values.categoryId
-    }
-    
+        console.log(values.image === undefined);
+        const prdUpdate = {
+            id: values.id,
+            name: values.name,
+            price: values.price,
+            desc: values.desc,
+            image: values.image === undefined ? product?.image : values.image?.file.thumbUrl,
+            categoryId: values.categoryId
+        }
 
-    
-        props.onUpdate(id, prdUpdate);
-        navigate('/admin/products')
+        props.onUpdate(id, prdUpdate as any);
+        // alert("Update product successfully");
+        // navigate('/admin/products')
     };
     const onFinishFailed = (errorInfo: any) => {
-      console.log('Failed:', errorInfo);
-  };
-  const uploadButton = (
-    <div>
-        <PlusOutlined />
-        <div style={{ marginTop: 8 }}>Upload</div>
-    </div>
-);
+        console.log('Failed:', errorInfo);
+    };
+    const uploadButton = (
+        <div>
+            <PlusOutlined />
+            <div style={{ marginTop: 8 }}>Upload</div>
+        </div>
+    );
     return (
         <div>
             <Form
@@ -127,7 +126,7 @@ const UpdateProductPage = (props: IProps) => {
                 <Form.Item
                     label="Product Image"
                     name="image"
-                  
+
                 >
                     <Upload
                         // action="http://localhost:3000/products"
@@ -146,7 +145,7 @@ const UpdateProductPage = (props: IProps) => {
                     label="Current Image"
                     name="currentImage"
                 >
-                    <Image src={product?.image}/>
+                    <Image src={product?.image} />
                 </Form.Item>
                 <Form.Item
                     label="Desc"
@@ -162,9 +161,9 @@ const UpdateProductPage = (props: IProps) => {
                     rules={[{ required: true, message: 'Please input your password!' }]}
                 >
                     <Select placeholder="please choose category" >
-                      {cate?.map(cateOb => (
-                        <Select.Option key={cateOb?._id} value={cateOb?._id}>{cateOb?.name}</Select.Option>
-                      ))}
+                        {cate?.map((cateOb: any) => (
+                            <Select.Option key={cateOb?._id} value={cateOb?._id}>{cateOb?.name}</Select.Option>
+                        ))}
                     </Select>
                 </Form.Item>
 
