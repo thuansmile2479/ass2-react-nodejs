@@ -5,7 +5,7 @@ import { ICategory } from "../../types/category";
 
 interface IProps {
     data: ICategory[],
-    onRemoveCate(id: string): void
+    onRemoveCate(id: any): void
 }
 interface ICategoryKey extends ICategory {
     key?: string

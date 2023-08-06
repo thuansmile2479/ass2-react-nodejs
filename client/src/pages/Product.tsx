@@ -2,6 +2,7 @@ import '../App.css'
 import { useEffect, useState } from "react";
 import { IProduct } from "../types/products";
 import { Link } from 'react-router-dom';
+import React from 'react';
 interface IProps {
     products: IProduct[],
     oneRemove: (_id: number) => void
@@ -16,9 +17,9 @@ const ProductManagementPage = (props: IProps) => {
         <div className='pro'>
             <h2 >Products</h2>
             <div className="product">
-                {data.map(item => {
+                {data.map((item: any) => {
                     return (
-                        <Link to={'/products/' + item._id}> 
+                        <Link to={'/products/' + item._id}>
                             <div className='products' key={item._id}>
                                 <img src={item.image} alt="" />
                                 <h4>{item.name}</h4>

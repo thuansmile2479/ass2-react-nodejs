@@ -139,8 +139,8 @@ const AddProductPage = (props: IProps) => {
                     rules={[{ required: true, message: 'Please input your password!' }]}
                 >
                     <Select placeholder="please choose category" >
-                      {cate?.map(cateOb => (
-                        <Select.Option key={cateOb._id} value={cateOb._id}>{cateOb.name}</Select.Option>
+                      {cate?.map((cateOb: any) => (
+                        <Select.Option key={cateOb?._id} value={cateOb?._id}>{cateOb.name}</Select.Option>
                       ))}
                     </Select>
                 </Form.Item>

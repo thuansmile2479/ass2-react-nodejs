@@ -7,12 +7,12 @@ interface IProprs {
   products: IProduct[];
 }
 const ProductDetailPage = (props: IProprs) => {
-  const { id } = useParams();
+  const { id } : any = useParams();
   console.log(props + id);
-  const [product, setProduct] = useState<IProduct>(props.products.find(item => item._id === id)!);
+  const [product, setProduct] = useState<IProduct>(props.products.find((item: any) => item._id === id)!);
   useEffect(() => {
-    const prd = props.products.find(item => item._id === id);
-    setProduct(prd)
+    const prd = props.products.find((item: any) => item._id === id);
+    setProduct(prd as any)
   }, [props, id]);
   return (
     <div className='class'>

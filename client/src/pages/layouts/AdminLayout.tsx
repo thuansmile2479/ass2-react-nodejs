@@ -77,7 +77,7 @@ const AdminLayout = () => {
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-        Nguyễn Duy Thuận 
+          Nguyễn Duy Thuận
         </Footer>
       </Layout>
     </Layout>
